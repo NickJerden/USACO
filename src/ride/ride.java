@@ -1,4 +1,4 @@
-/*
+package ride;/*
 ID: jerdenn1
 LANG: JAVA
 TASK: test
