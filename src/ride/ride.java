@@ -23,14 +23,12 @@ class ride {
             i++;
         }
 
-
-        if (unicode(lines[0].toCharArray()) % 47 == unicode(lines[1].toCharArray()) % 47) {
+        if (unicode(lines[0].toCharArray()) % 47 ==  unicode(lines[1].toCharArray()) % 47) {
             out.println("GO");
         } else {
             out.println("STAY");
         }
 
-        out.println();                           // output result
         out.close();                                  // close the output file
     }
 
