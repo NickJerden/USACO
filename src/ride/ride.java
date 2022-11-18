@@ -12,9 +12,9 @@ class ride {
         int i = 0;
 
         // input file name goes above
-        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("gift1.out")));
+        PrintWriter out = new PrintWriter(new BufferedWriter(new FileWriter("ride.out")));
 
-        Scanner scanner = new Scanner(new File("gift1.in"));
+        Scanner scanner = new Scanner(new File("ride.in"));
 
         while(scanner.hasNextLine()) {
 
