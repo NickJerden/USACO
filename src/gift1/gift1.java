@@ -26,10 +26,10 @@ class gift1 {
             i++;
         }
 
-        String[] people = new String[6];
-        int[] peopleMoney = new int[6];
+        String[] people = new String[5];
+        int[] peopleMoney = new int[5];
         for (int k = 1; k < 6; k++) {
-            people[k] = lines[k];
+            people[k - 1] = lines[k];
             lines[k] = "0";
         }
 
@@ -73,21 +73,31 @@ class gift1 {
 //            System.out.println(numbers[j][0] + " " + numbers[j][1]);
 //        }
 
-        String[] gifters = new String[5];
         for (int j = 0; j < 5; j++) {
             if (numbers[j][1] != 0) {
-                int amount = ((numbers[j][0] - (numbers[j][0] % numbers[j][1])) / numbers[j][1]);
-                peopleMoney[(peopleNumber(names[nameIndex]))] += numbers[j][0] % numbers[j][1];
-                for (int k = j + 1; k < numbers[j][1]; k++) {
+                int amount = (numbers[j][0] - (numbers[j][0] % numbers[j][1])) / numbers[j][1];
+                peopleMoney[peopleNumber(names[nameIndex])] += numbers[j][0] % numbers[j][1];
+                peopleMoney[peopleNumber(names[nameIndex])] -= numbers[j][0];
+                //System.out.println(names[nameIndex] + " has " + peopleMoney[peopleNumber(names[nameIndex])] + " left");
+                for (int k = nameIndex + 1; k < nameIndex + numbers[j][1] + 1; k++) {
                     peopleMoney[peopleNumber(names[k])] += amount;
+//                    System.out.println(names[k] + " got paid " + amount);
+//                    System.out.println(names[k] + " has " + peopleMoney[peopleNumber(names[k])]);
                 }
+
+//                System.out.println(numbers[j][0] % numbers[j][1]);
+//                System.out.println(names[nameIndex] + " has " + peopleMoney[peopleNumber(names[nameIndex])]);
                 nameIndex += numbers[j][1] + 1;
-
-                System.out.println(names[nameIndex] + " gave " + numbers[j][0] + " to " + numbers[j][1] + " people");
-
             }
 
+
         }
+
+        out.println("dave " + peopleMoney[0]);
+        out.println("laura " + peopleMoney[1]);
+        out.println("owen " + peopleMoney[2]);
+        out.println("vick " + peopleMoney[3]);
+        out.println("amr " + peopleMoney[4]);
 
         out.close();                                  // close the output file
     }
@@ -100,13 +110,13 @@ class gift1 {
 
     static int peopleNumber(String person) {
         switch (person){
-            case "dave": return 1;
-            case "laura": return 2;
-            case "owen": return 3;
-            case "vick": return 4;
-            case "amr": return 5;
+            case "dave": return 0;
+            case "laura": return 1;
+            case "owen": return 2;
+            case "vick": return 3;
+            case "amr": return 4;
         }
-        return 0;
+        return 5;
     }
 
 }
